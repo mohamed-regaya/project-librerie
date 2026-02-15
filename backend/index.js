@@ -1,22 +1,27 @@
 import express from "express";
-import fruitRouter from "./routes/fruitsRoutes.js";
+import productRouter from "./routes/productsRoutes.js";
 import namesRouter from "./routes/namesRoutes.js";
 import voituresRouter from "./routes/voitureRoutes.js";
 //import mongoose
 import mongoose from "mongoose"; // ODM driver lel database
 import authRouter from "./routes/authRoutes.js";
+import salesRouter from "./routes/salesRoutes.js";
 //path ==> chemin , tri9
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
+import cors from "cors";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 let server = express();
+server.use(cors());
 dotenv.config();
 server.use(express.json());
 
-server.use("/fruits", fruitRouter); // ajout de prefix
+server.use("/products", productRouter); // ajout de prefix
+server.use("/sales", salesRouter); // ajout de prefix
+
 server.use("/names", namesRouter);
 server.use("/voitures", voituresRouter);
 server.use("/auth", authRouter);

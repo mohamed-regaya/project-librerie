@@ -14,8 +14,8 @@ let userSchema = new mongoose.Schema({
     require: true,
   },
   address: {
-    type: mongoose.Types.ObjectId,
-    ref: addressModel,
+    type: String,
+    require: true,
   },
   image: {
     type: String,
@@ -24,6 +24,9 @@ let userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ["worker", "chef", "admin"],
+  },
+  resetCode: {
+    type: String,
   },
 });
 
