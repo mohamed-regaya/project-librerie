@@ -41,7 +41,8 @@ export default function Header() {
         {/* Logo */}
         <div className="text-xl font-bold tracking-tight">
           <button onClick={() => navigate("/")}>
-            Librerie<span className="text-indigo-600">Mohamed Regaya</span>
+            Librerie
+            <span className="text-indigo-600">Mohamed Regaya Tunis</span>
           </button>
         </div>
 
