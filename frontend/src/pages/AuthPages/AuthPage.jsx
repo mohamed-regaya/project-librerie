@@ -30,7 +30,7 @@ export default function AuthPage() {
       let formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
-      formData.append("role", role);
+      formData.append("role", "client");
       formData.append("full_name", username);
       formData.append("address", address);
       formData.append("image", image);
@@ -120,18 +120,7 @@ export default function AuthPage() {
               />
             </div>
           )}
-          {mode === "register" && (
-            <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
-                Role
-              </label>
-              <select onChange={(e) => setRole(e.target.value)}>
-                <option value={"chef"}>chef</option>
-                <option value={"admin"}>admin</option>
-                <option value={"worker"}>worker</option>
-              </select>
-            </div>
-          )}
+
           {mode === "register" && (
             <div>
               <label className="block text-sm font-medium text-gray-600 mb-1">

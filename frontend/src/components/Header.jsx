@@ -6,6 +6,8 @@ import {
   FiHeart,
   FiLogIn,
   FiLogOut,
+  FiCommand,
+  FiTruck,
 } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
@@ -70,16 +72,40 @@ export default function Header() {
                   className="absolute right-0 mt-3 w-40 rounded-xl border bg-white shadow-lg z-50"
                 >
                   {user ? (
-                    <button
-                      onClick={() => {
-                        dispatch(logout());
-                        setOpen(false);
-                      }}
-                      className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-100"
-                    >
-                      <FiLogOut />
-                      Logout
-                    </button>
+                    <>
+                      {" "}
+                      <button
+                        onClick={() => {
+                          dispatch(logout());
+                          setOpen(false);
+                        }}
+                        className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-100"
+                      >
+                        <FiLogOut />
+                        Logout
+                      </button>
+                      {user.role != "admin" ? (
+                        <button
+                          onClick={() => {
+                            navigate("/mes-commands");
+                          }}
+                          className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-100"
+                        >
+                          <FiTruck />
+                          Mes commandes
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            navigate("/commandes-management");
+                          }}
+                          className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-100"
+                        >
+                          <FiTruck />
+                          Gestion des commandes
+                        </button>
+                      )}
+                    </>
                   ) : (
                     <button
                       onClick={() => {

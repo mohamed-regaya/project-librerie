@@ -23,7 +23,7 @@ let userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["worker", "chef", "admin"],
+    enum: ["worker", "chef", "admin", "client"],
   },
   resetCode: {
     type: String,

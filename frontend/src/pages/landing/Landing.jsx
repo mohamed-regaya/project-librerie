@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 function LibraryLanding() {
   const [products, setProducts] = useState([]);
   const [index, setIndex] = useState(0);
-
+  const [loading, setLoading] = useState(false);
   const fetchProducts = async () => {
     try {
       const res = await productServices.handleGetAllProducts();

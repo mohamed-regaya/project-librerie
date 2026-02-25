@@ -5,10 +5,13 @@ import {
   removeFromBasket,
   updateQuantity,
 } from "../../../../redux/slices/basketSlice";
+import CheckoutModal from "../../../components/CheckoutModal";
+import { useState } from "react";
 
 export default function BasketPage() {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.basket.items);
+  const { items } = useSelector((state) => state.basket);
+  const [isOpen, setIsOpen] = useState(false);
 
   const totalPrice = items.reduce(
     (total, item) => total + item.price * item.buyedQuantity,
@@ -90,12 +93,23 @@ export default function BasketPage() {
               Total : {totalPrice.toFixed(2)} €
             </span>
 
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition">
+            <button
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition"
+              onClick={() => setIsOpen(true)}
+            >
               <FaShoppingBag />
               Commander
             </button>
           </div>
         </motion.div>
+      )}
+
+      {isOpen && (
+        <CheckoutModal
+          totalPrice={totalPrice}
+          onClose={() => setIsOpen(false)}
+          products={items}
+        />
       )}
     </div>
   );

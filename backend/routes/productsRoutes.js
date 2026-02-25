@@ -9,7 +9,8 @@ const router = express.Router();
 router.post(
   "/add_product",
   upload.single("image"),
-  productController.createProduct
+  verifyJWT(["admin"]),
+  productController.createProduct,
 );
 
 router.get("/get_all_products", productController.getAllProducts);
@@ -19,13 +20,15 @@ router.get("/get_product_by_id/:id", productController.getProductById);
 router.put(
   "/update_product/:id",
   upload.single("image"),
-  productController.updateProduct
+  verifyJWT(["admin"]),
+  productController.updateProduct,
 );
 
 router.delete(
   "/delete_product/:id",
+  verifyJWT(["admin"]),
 
-  productController.deleteProduct
+  productController.deleteProduct,
 );
 
 export default router;

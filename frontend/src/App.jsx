@@ -18,6 +18,8 @@ import FavoritePage from "./pages/client/products/MyFavorites";
 import ProtectedRoutes from "./layout/ProtectedRoutes";
 import UnauthorizedPage from "./pages/commun/Unauthorized";
 import ResetPassword from "./pages/commun/ResetPassword";
+import MyCommandes from "./pages/client/commandes/MyCommandes";
+import CommandesManagement from "./pages/admin/commandesManagement/CommandesManagement";
 
 export default function App() {
   return (
@@ -78,6 +80,14 @@ export default function App() {
             </ProtectedRoutes>
           }
         />
+        <Route
+          path="/commandes-management"
+          element={
+            <ProtectedRoutes allowedRoles={["admin"]}>
+              <CommandesManagement />
+            </ProtectedRoutes>
+          }
+        />
 
         {/* -------- ALL AUTHENTICATED USERS -------- */}
         <Route
@@ -103,20 +113,21 @@ export default function App() {
           }
         />
 
-        <Route
-          path="/my-basket"
-          element={
-            <ProtectedRoutes allowedRoles={["client"]}>
-              <BasketPage />
-            </ProtectedRoutes>
-          }
-        />
+        <Route path="/my-basket" element={<BasketPage />} />
 
         <Route
           path="/my-favorites"
           element={
             <ProtectedRoutes allowedRoles={["client"]}>
               <FavoritePage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/mes-commands"
+          element={
+            <ProtectedRoutes allowedRoles={["client"]}>
+              <MyCommandes />
             </ProtectedRoutes>
           }
         />

@@ -6,6 +6,8 @@ import voituresRouter from "./routes/voitureRoutes.js";
 import mongoose from "mongoose"; // ODM driver lel database
 import authRouter from "./routes/authRoutes.js";
 import salesRouter from "./routes/salesRoutes.js";
+import odersRoutes from "./routes/orderRoutes.js";
+
 //path ==> chemin , tri9
 import path from "path";
 import { fileURLToPath } from "url";
@@ -21,7 +23,7 @@ server.use(express.json());
 
 server.use("/products", productRouter); // ajout de prefix
 server.use("/sales", salesRouter); // ajout de prefix
-
+server.use("/orders", odersRoutes);
 server.use("/names", namesRouter);
 server.use("/voitures", voituresRouter);
 server.use("/auth", authRouter);
