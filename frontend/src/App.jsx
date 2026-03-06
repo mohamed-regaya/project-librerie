@@ -20,6 +20,8 @@ import UnauthorizedPage from "./pages/commun/Unauthorized";
 import ResetPassword from "./pages/commun/ResetPassword";
 import MyCommandes from "./pages/client/commandes/MyCommandes";
 import CommandesManagement from "./pages/admin/commandesManagement/CommandesManagement";
+import ChatWithAdmin from "./pages/client/chat/ChatWithAdmin";
+import AdminChat from "./pages/admin/chat/ChatWithClient";
 
 export default function App() {
   return (
@@ -81,6 +83,14 @@ export default function App() {
           }
         />
         <Route
+          path="/chat-with-client"
+          element={
+            <ProtectedRoutes allowedRoles={["admin"]}>
+              <AdminChat />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
           path="/commandes-management"
           element={
             <ProtectedRoutes allowedRoles={["admin"]}>
@@ -109,6 +119,15 @@ export default function App() {
           element={
             <ProtectedRoutes allowedRoles={["client"]}>
               <ClientCard />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/chat-with-admin"
+          element={
+            <ProtectedRoutes allowedRoles={["client"]}>
+              <ChatWithAdmin />
             </ProtectedRoutes>
           }
         />

@@ -5,11 +5,12 @@ import { persistReducer, persistStore } from "redux-persist";
 import authReducer from "./slices/authSlice";
 import basketReducer from "./slices/basketSlice";
 import favoriteReducer from "./slices/favoriteSlice";
-
+import chatReducer from "./slices/chatSlice";
 const rootReducer = combineReducers({
   auth: authReducer,
   basket: basketReducer,
   favorite: favoriteReducer,
+  chat: chatReducer,
 });
 
 const persistConfig = {
@@ -17,7 +18,7 @@ const persistConfig = {
   version: 1,
 
   storage,
-  whitelist: ["auth", "basket", "favorite"], // choose what to persist
+  whitelist: ["auth", "basket", "favorite", "chat"], // choose what to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
