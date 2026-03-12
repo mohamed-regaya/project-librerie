@@ -6,7 +6,7 @@ export const registerUser = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       let result = await axios.post(
-        "http://localhost:8000/auth/register",
+        import.meta.env.VITE_API_URL + "/auth/register",
         data,
         {
           headers: {
@@ -25,7 +25,10 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (data, thunkAPI) => {
     try {
-      let result = await axios.post("http://localhost:8000/auth/login", data);
+      let result = await axios.post(
+        import.meta.env.VITE_API_URL + "/auth/login",
+        data,
+      );
       return result.data.result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -38,7 +41,7 @@ export const updateProfile = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       let result = await axios.put(
-        "http://localhost:8000/auth/update_profile",
+        import.meta.env.VITE_API_URL + "/auth/update_profile",
         data,
         {
           headers: {
