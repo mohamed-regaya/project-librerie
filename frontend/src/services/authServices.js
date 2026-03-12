@@ -1,13 +1,13 @@
 import axios from "axios";
 
-let BASE_URL = "http://localhost:8000/auth";
+let BASE_URL = import.meta.env.VITE_API_URL + "/auth";
 
 import { store } from "../../redux/store";
 
 // instance de axios (version personalisé mel axios )
 
 let api = axios.create({
-  baseURL: "http://localhost:8000/auth",
+  baseURL: BASE_URL,
 });
 
 api.interceptors.request.use((config) => {

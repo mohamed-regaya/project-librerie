@@ -2,9 +2,9 @@ import axios from "axios";
 import { store } from "../../redux/store";
 
 // instance de axios (version personalisé mel axios )
-
+let BASE_URL = import.meta.env.VITE_API_URL + "/orders";
 let api = axios.create({
-  baseURL: "http://localhost:8000/orders",
+  baseURL: BASE_URL,
 });
 
 api.interceptors.request.use((config) => {
