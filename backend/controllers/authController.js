@@ -1,15 +1,18 @@
 import authService from "../services/authService.js";
 
 const register = async (req, res) => {
-  let new_req_body = { ...req.body, image: req.file.path };
+  let new_req_body = {
+    ...req.body,
+    image: req.file ? req.file.path : "/dssdsdsd",
+  };
   // req.body.image = req.file.path
   let result = await authService.register(new_req_body);
-  return res.json({ result: result });
+  return res.status(200).json({ result: result });
 };
 
 const login = async (req, res) => {
   let result = await authService.login(req.body);
-  return res.json({ result: result });
+  return res.status(200).json({ result: result });
 };
 
 const getAllUsers = async (req, res) => {

@@ -63,7 +63,10 @@ const login = async (data) => {
     role: user.role,
   };
 
-  const token = jwt.sign(payload, process.env.JWT_SECRET_KEY);
+  const token = jwt.sign(
+    payload,
+    "qdsqsdqsd-qsdqdqdqd-qsdqsdqsd" /*process.env.JWT_SECRET_KEY*/,
+  );
 
   return {
     msg: "Connecté avec succès",

@@ -36,7 +36,7 @@ function LibraryLanding() {
   return (
     <>
       <NavMenu />
-      <div className="bg-slate-950 text-white overflow-hidden">
+      <div className="bg-slate-950 text-white overflow-hidden" role="main">
         {/* Hero Section */}
 
         <div className="relative h-[420px] w-full overflow-hidden">

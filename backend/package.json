@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "npm install && nodemon index.js",
+    "test": "jest",
+    "backend": "npm install && nodemon server.js",
     "frontend": "cd ../frontend && npm run dev",
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "build": "npm run build"
@@ -21,11 +21,17 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "jest": "^30.3.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.0",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.13",
     "nodemon": "^3.1.11",
-    "socket.io": "^4.8.3"
+    "socket.io": "^4.8.3",
+    "supertest": "^7.2.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.0",
+    "babel-jest": "^30.3.0"
   }
 }
