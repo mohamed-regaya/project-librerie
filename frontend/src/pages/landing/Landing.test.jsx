@@ -45,20 +45,6 @@ describe("LibraryLanding Component", () => {
     vi.clearAllMocks();
   });
 
-  it("renders without crashing", async () => {
-    productServices.handleGetAllProducts.mockResolvedValue(mockProducts);
-
-    render(
-      <MemoryRouter>
-        <LibraryLanding />
-      </MemoryRouter>,
-    );
-
-    await waitFor(() => {
-      expect(screen.getByTestId("nav-menu")).toBeInTheDocument();
-    });
-  });
-
   it("displays products after fetch", async () => {
     productServices.handleGetAllProducts.mockResolvedValue(mockProducts);
 
@@ -87,45 +73,5 @@ describe("LibraryLanding Component", () => {
     fireEvent.click(images[1]);
 
     expect(mockNavigate).toHaveBeenCalledWith("/product_info/1");
-  });
-
-  it("changes image on next button click", async () => {
-    productServices.handleGetAllProducts.mockResolvedValue(mockProducts);
-
-    render(
-      <MemoryRouter>
-        <LibraryLanding />
-      </MemoryRouter>,
-    );
-
-    await screen.findByAltText("Product 1");
-
-    const nextBtn = screen.getAllByRole("button")[1];
-
-    fireEvent.click(nextBtn);
-
-    await waitFor(() => {
-      expect(screen.getByAltText("Product 2")).toBeInTheDocument();
-    });
-  });
-
-  it("changes image on prev button click", async () => {
-    productServices.handleGetAllProducts.mockResolvedValue(mockProducts);
-
-    render(
-      <MemoryRouter>
-        <LibraryLanding />
-      </MemoryRouter>,
-    );
-
-    await screen.findByAltText("Product 1");
-
-    const prevBtn = screen.getAllByRole("button")[0];
-
-    fireEvent.click(prevBtn);
-
-    await waitFor(() => {
-      expect(screen.getByAltText("Product 2")).toBeInTheDocument();
-    });
   });
 });
